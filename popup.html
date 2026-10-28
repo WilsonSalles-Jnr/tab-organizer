@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TabOrganizer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand-icon">T</div>
+      <div><h1>TabOrganizer</h1><p>Suas abas, em ordem.</p></div>
+      <button id="refreshBtn" class="icon-btn" title="Atualizar">↻</button>
+    </header>
+
+    <section class="stats" aria-label="Resumo das abas">
+      <div class="stat"><strong id="tabCount">—</strong><span>Abas</span></div>
+      <div class="stat"><strong id="domainCount">—</strong><span>Domínios</span></div>
+      <div class="stat"><strong id="groupCount">—</strong><span>Grupos</span></div>
+    </section>
+
+    <button id="organizeBtn" class="primary"><span>✦</span> Organizar abas agora</button>
+
+    <section class="setting-row">
+      <div><strong>Organização automática</strong><p>Agrupa abas quando são abertas ou navegadas.</p></div>
+      <label class="switch"><input type="checkbox" id="autoToggle"><span></span></label>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><h2>Ferramentas</h2></div>
+      <button id="duplicatesBtn" class="action-row">
+        <span class="action-icon">⧉</span><span class="action-copy"><strong>Verificar duplicatas</strong><small id="duplicateHint">Detectar URLs repetidas</small></span><span class="chevron">›</span>
+      </button>
+      <div id="duplicatesArea" class="inline-area hidden"></div>
+      <button id="closeDuplicatesBtn" class="action-row">
+        <span class="action-icon">×</span><span class="action-copy"><strong>Fechar duplicatas</strong><small>Manter uma aba por URL</small></span><span class="chevron">›</span>
+      </button>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><h2>Coleções</h2></div>
+      <form id="saveForm" class="save-form">
+        <input id="collectionName" type="text" maxlength="60" placeholder="Nome da coleção (ex.: Pesquisa)" required>
+        <button type="submit" class="secondary">Salvar</button>
+      </form>
+      <div id="collectionsList" class="collections-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><h2>Regras de domínio</h2></div>
+      <form id="ruleForm" class="rule-form">
+        <input id="ruleDomain" type="text" placeholder="exemplo.com" required>
+        <input id="ruleName" type="text" maxlength="50" placeholder="Nome do grupo" required>
+        <button type="submit" class="secondary full">Adicionar regra</button>
+      </form>
+      <div id="rulesList" class="rules-list"></div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <footer>Funciona localmente no seu navegador.</footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
